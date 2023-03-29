@@ -31,11 +31,5 @@
     "forceConsistentCasingInFileNames": true,
     // `tsdx build` ignores this option, but it is commonly used when type-checking separately with `tsc`
     "noEmit": true,
-    // path add prefix
-    "baseUrl": ".",
-    // path alias
-    "paths": {
-      "@/*": ["src/*"]
-    }
   }
 }

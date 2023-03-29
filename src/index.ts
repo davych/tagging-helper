@@ -1,5 +1,4 @@
-import {Provider} from "@/react/Provider";
-
+import { pageView } from './core/senders'
 export {
-  Provider
+  pageView
 }
