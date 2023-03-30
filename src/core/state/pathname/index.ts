@@ -18,6 +18,7 @@ export const update = (pathname: string) =>
 store.subscribe({
   next: ({ pathname }: { pathname: string }) => {
     if (pathname) {
+      logger.info('before send can handle runtime data', pathname)
       pageView.send(pathname);
     }
   },
