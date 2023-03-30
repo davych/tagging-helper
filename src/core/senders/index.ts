@@ -1,5 +1,3 @@
-/**
- * @fileoverview this is in charge of sending tracking data.
- */
+import * as pageView from './page-view';
 
-export * as pageView from './page-view';
+export { pageView };

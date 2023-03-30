@@ -13,8 +13,7 @@ export const update = (tags: Record<string, unknown>[]) => {
   const { data } = store.getValue();
   if (isEmpty(data)) {
     store.update(setProps({ data: tags }));
-  }
-  else {
+  } else {
     // nothing todo
   }
 };

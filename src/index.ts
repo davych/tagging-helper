@@ -1,4 +1,2 @@
-import { initialize } from './core/initialize'
-export {
-  initialize
-}
+import { initialize } from './core/initialize';
+export { initialize };

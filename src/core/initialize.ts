@@ -23,6 +23,6 @@ export const initialize = (config: Config) => {
   state.rules.update(mergedRules);
   state.appInfos.update(appInfos);
   state.userSegments.update(userSegments);
-  state.compose.update({rules: mergedRules, tags: mergedTags});
+  state.compose.update({ rules: mergedRules, tags: mergedTags });
   state.pathname.update(pathname);
-} 
+};

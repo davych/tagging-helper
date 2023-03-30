@@ -14,8 +14,7 @@ export const update = (rules: Record<string, unknown>) => {
   const { data } = store.getValue();
   if (isEmpty(data)) {
     store.update(setProps({ data: rules }));
-  }
-  else {
+  } else {
     // nothing todo
   }
-}
+};

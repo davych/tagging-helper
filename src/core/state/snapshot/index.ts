@@ -8,15 +8,17 @@ interface SnapshotProps {
 
 export const store = createStore(
   { name: 'snapshot' },
-  withProps<SnapshotProps>({ data: {  } })
+  withProps<SnapshotProps>({ data: {} })
 );
 
 export const update = (data: Record<string, unknown>) =>
-  store.update(setProps((store) => ({ data: {
-    ...store.data,
-    ...data
-  } })));
-
-
+  store.update(
+    setProps(store => ({
+      data: {
+        ...store.data,
+        ...data,
+      },
+    }))
+  );
 
 export default store;

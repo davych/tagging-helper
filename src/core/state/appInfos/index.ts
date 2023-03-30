@@ -9,7 +9,12 @@ export const store = createStore(
   withProps<AppInfoProps>({ data: {} })
 );
 
-export const update = (info: Record<string, unknown>) => store.update(setProps((store) => ({ data: {
-  ...store.data,
-  ...info
-} })));
+export const update = (info: Record<string, unknown>) =>
+  store.update(
+    setProps(store => ({
+      data: {
+        ...store.data,
+        ...info,
+      },
+    }))
+  );
