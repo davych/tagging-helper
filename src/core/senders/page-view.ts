@@ -5,13 +5,13 @@ import logger from '../logger';
 
 export const send = (pathname: string) => {
   const data = of(pathname).pipe(
-    tap(logger),
+    tap(logger.info),
     // get tag data and rules by pathname
     map(v => v)  
   );
   data.subscribe({
-    next: (digitalData: Record<string, unknown>) => console.log('send---->', digitalData),
-    error: (e: Error) => console.error('send error', e),
-    complete: () => console.info('send complete') 
+    next: (digitalData: Record<string, unknown>) => logger.log('send---->', digitalData),
+    error: (e: Error) => logger.error('send error', e),
+    complete: () => logger.info('send complete') 
   });
 }

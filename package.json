@@ -83,6 +83,8 @@
     "typescript": "^5.0.2"
   },
   "dependencies": {
+    "@ngneat/elf": "^2.3.1",
+    "lodash": "^4.17.21",
     "rxjs": "^7.8.0"
   }
 }

@@ -14,7 +14,7 @@
     "event": "page_view",
     "rules": {
       "page": {
-        "testTrack": "<pageName>:<channel>:<pageType>:<section>"
+        "testTrack": "<pageName>:<channel>:<pageType>--<section>"
       } 
     }
   },
@@ -25,8 +25,26 @@
     "meta": {
       "location": "Home"
     },
+    "parent": "/home",
     "identifier": "home-test-button",
     "type": "button",
     "event": "button_click"
+  },
+  {
+    "tag": {
+      "buttonName": "testclick-2"
+    },
+    "meta": {
+      "location": "About"
+    },
+    "parent": "/About",
+    "identifier": "home-test-button-2",
+    "type": "button",
+    "event": "button_click",
+    "rules": {
+      "button": {
+        "buttonName": "<buttonName>-clicked"
+      } 
+    }
   }
 ]

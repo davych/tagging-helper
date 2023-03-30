@@ -1,4 +1,4 @@
-import { pageView } from './core/senders'
+import { initialize } from './core/initialize'
 export {
-  pageView
+  initialize
 }

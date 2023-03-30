@@ -1,4 +1,2 @@
-const logger = (message: string) => {
-  console.log('logger---->', message);
-}
+const logger = console;
 export default logger;
