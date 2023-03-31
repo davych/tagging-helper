@@ -1,12 +1,13 @@
 import { createStore, withProps, setProps } from '@ngneat/elf';
 import * as archive from '../../archive';
+import { isEmpty } from 'lodash';
 interface ComposeProps {
-  data: ComposedDataType | null;
+  data: ComposedDataType;
 }
 
 export const store = createStore(
   { name: 'compose' },
-  withProps<ComposeProps>({ data: null })
+  withProps<ComposeProps>({ data: {} })
 );
 
 export const update = ({
@@ -17,7 +18,7 @@ export const update = ({
   tags: TagsType[];
 }) => {
   const { data } = store.getValue();
-  if (!data) {
+  if (isEmpty(data)) {
     const composeData = archive.compose({ rules, tags });
     store.update(setProps({ data: composeData }));
   }
