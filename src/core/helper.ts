@@ -25,14 +25,10 @@ export const replacePlaceholders = (data: Record<string, string>, tpl: string): 
   placeholders.forEach(placeholder => {
     const key = placeholder.slice(1, -1); // remove angle brackets from placeholder
     const value = data[key] || '';
-    // if (data.hasOwnProperty(key)) {
+    if (data.hasOwnProperty(key)) {
       result = result.replace(placeholder, value); // replace placeholder with object value
-    // }
-    // replace each possible double :: with single :
-    result = result.replace(/::/g, ':');
+    }
   });
-  // replace first : and last : with empty string
-  result = result.replace(/^:/, '').replace(/:$/, '');
   return result;
 }
 

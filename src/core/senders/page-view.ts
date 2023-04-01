@@ -6,10 +6,15 @@ import { compose, userSegments, appInfos } from '../state';
 import * as helper from '../helper';
 
 export const send = (pathname: string) => {
+
   const composeValue = compose.store.getValue();
+  const { pages } = composeValue.data;
+  if(!pages || !pages[pathname]) {
+    return
+  }
   const userSegmentsValue = userSegments.store.getValue();
   const appInfosValue = appInfos.store.getValue();
-  const { pages } = composeValue.data;
+  
   const data = of(pathname).pipe(
     // tap(logger.info),
     map((v: string) => {

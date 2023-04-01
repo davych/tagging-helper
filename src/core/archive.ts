@@ -7,30 +7,44 @@ interface ComposeType {
 }
 
 export const compose = ({ rules, tags }: ComposeType): ComposedDataType => {
-  // get type is page in tags use lodash
+
+  const castedPage = castPage(tags);
+  const castedButton = caseButton(tags);
+
+  modifyPageRules(rules, castedPage)
+  modifyButtonRules(rules, castedButton, castedPage)
+  return {
+    pages: castedPage,
+    buttons: castedButton,
+  };
+};
+
+
+export const castPage = (tags: TagsType[]) => {
   const pageTags = tags.filter((tag: TagsType) => tag.type === 'page');
-  // convert pageTags to object, use lodash, key is idenfitier's value
-  const pageCastData = pageTags.reduce(
+  return pageTags.reduce(
     (acc: Record<string, TagsType>, tag: TagsType) => {
       acc[tag.identifier as string] = tag;
       return acc;
     },
     {}
   );
+}
 
-  // get type is button in tags use lodash
-  const buttonTags = tags.filter((tag: TagsType) => tag.type === 'button');
-  // convert buttonTags to object, use lodash, key is idenfitier's value
-  const buttonCastData = buttonTags.reduce(
-    (acc: Record<string, TagsType>, tag: TagsType) => {
-      acc[tag.identifier as string] = tag;
-      return acc;
-    },
-    {}
-  );
+export const caseButton = (tags: TagsType[]) => {
+   const buttonTags = tags.filter((tag: TagsType) => tag.type === 'button');
+   return buttonTags.reduce(
+     (acc: Record<string, TagsType>, tag: TagsType) => {
+       acc[tag.identifier as string] = tag;
+       return acc;
+     },
+     {}
+   );
+}
 
-  for (const key in pageCastData) {
-    const pageTag = pageCastData[key];
+export const modifyPageRules = (rules: RulesType, casedPage: Record<string, TagsType>) => {
+  for (const key in casedPage) {
+    const pageTag = casedPage[key];
     const { rules: pageRules = {} } = pageTag;
     const mergedRules = merge(
       helper.flattenKeys(rules),
@@ -38,11 +52,13 @@ export const compose = ({ rules, tags }: ComposeType): ComposedDataType => {
     );
     set(pageTag, 'rules', mergedRules);
   }
+}
 
-  for (const key in buttonCastData) {
-    const buttonTag = buttonCastData[key];
+export const modifyButtonRules = (rules: RulesType, casedButton: Record<string, TagsType>, casedPage: Record<string, TagsType>) => {
+  for (const key in casedButton) {
+    const buttonTag = casedButton[key];
     const { rules: buttonRules = {} } = buttonTag;
-    const parentPage = pageCastData[buttonTag.parent as string] || {};
+    const parentPage = casedPage[buttonTag.parent as string] || {};
     const { rules: pageRules = {} } = parentPage;
     const mergedRules = merge(
       helper.flattenKeys(rules),
@@ -51,8 +67,4 @@ export const compose = ({ rules, tags }: ComposeType): ComposedDataType => {
     );
     set(buttonTag, 'rules', mergedRules);
   }
-  return {
-    pages: pageCastData,
-    buttons: buttonCastData,
-  };
-};
+}
