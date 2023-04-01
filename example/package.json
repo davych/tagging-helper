@@ -7,7 +7,8 @@
     "start": "parcel index.html --no-cache",
     "build": "parcel build index.html",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token=1ff2b4bc449f"
   },
   "dependencies": {
     "react-app-polyfill": "^1.0.0",
@@ -32,7 +33,10 @@
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.8.4",
     "babel-loader": "^8.3.0",
+    "chromatic": "^6.17.2",
     "parcel": "^2.8.3",
     "typescript": "^3.4.5"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "example@1.0.0"
 }
