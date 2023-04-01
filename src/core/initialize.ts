@@ -1,8 +1,5 @@
 import * as state from './state';
 import defaultRules from './jsons/rules.json';
-import defaultTags from './jsons/tags.json';
-
-import { merge } from 'lodash';
 
 interface Config {
   rules?: RulesType;
@@ -14,15 +11,12 @@ interface Config {
 
 export const initialize = (config: Config) => {
   const { rules, tags, appInfos, userSegments, pathname } = config;
-  const mergedRules = merge(defaultRules, rules);
+  const mergedRules = rules || defaultRules;
 
-  // temp code
-  const mergedTags = merge(defaultTags, tags);
-
-  state.tags.update(mergedTags);
+  state.tags.update(tags);
   state.rules.update(mergedRules);
   state.appInfos.update(appInfos);
   state.userSegments.update(userSegments);
-  state.compose.update({ rules: mergedRules, tags: mergedTags });
+  state.compose.update({ rules: mergedRules, tags });
   state.pathname.update(pathname);
 };
