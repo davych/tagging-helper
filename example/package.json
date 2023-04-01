@@ -5,11 +5,14 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel index.html --no-cache",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "react-app-polyfill": "^1.0.0",
-    "react-router-dom": "^5.3.4"
+    "react-router-dom": "^6.10.0",
+    "storybook-addon-react-router-v6": "^0.3.5"
   },
   "alias": {
     "react": "../node_modules/react",
@@ -17,8 +20,18 @@
     "scheduler/tracing": "../node_modules/scheduler/tracing-profiling"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/builder-webpack4": "^6.5.16",
+    "@storybook/manager-webpack4": "^6.5.16",
+    "@storybook/react": "^6.5.16",
+    "@storybook/testing-library": "^0.0.13",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.8.4",
+    "babel-loader": "^8.3.0",
     "parcel": "^2.8.3",
     "typescript": "^3.4.5"
   }
