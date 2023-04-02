@@ -2,7 +2,6 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -18,7 +17,7 @@ import { initialize, updateTags } from '../../../src';
 import Page1 from './Page1';
 import Page2 from './Page2';
 
-export const App = ({ tags }) => {
+export const App = ({ tags, appInfos, userSegments }) => {
   const location = useLocation();
   const navigate = useNavigate();
   React.useEffect(() => {
@@ -28,12 +27,8 @@ export const App = ({ tags }) => {
     initialize({
       pathname: location.pathname,
       tags,
-      appInfos: {
-        name: 'example',
-      },
-      userSegments: {
-        userId: '123',
-      }
+      appInfos,
+      userSegments
     })
   }, [location]);
 
@@ -44,7 +39,7 @@ export const App = ({ tags }) => {
   return (
     <Box >
       <CssBaseline />
-      <AppBar component="nav">
+      <AppBar position="relative">
         <Toolbar>
           <Typography
             variant="h6"
@@ -53,7 +48,7 @@ export const App = ({ tags }) => {
           >
             hello
           </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Box>
             <Button sx={{ color: '#fff' }} onClick={() => {
               navigate('/page1')
             }}>

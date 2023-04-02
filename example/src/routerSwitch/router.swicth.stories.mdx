@@ -1,29 +1,32 @@
-import { Meta } from '@storybook/addon-docs';
-import RouterSwicth from './routerSwitch/index.tsx';
-
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { withConsole } from '@storybook/addon-console';
 import { BrowserRouter } from 'react-router-dom';
+import RouterSwicth from '.';
 
-<Meta title="Example/Introduction" />
+<Meta title="Example/switch-router" component={RouterSwicth} />
 
-# Introduction
-Tagging helper
+export const Template = (args) => {
+  return (
+    <BrowserRouter>
+      <RouterSwicth {...args} />
+    </BrowserRouter>
+  );
+};
 
-# Installation
-  
-  ```bash
-  npm install xxxx
-  ```
-# Usage
-
-  ```js
-  import { Tagging } from 'xxxx';
-  ```
-  
-# RouterSwicth
-
-<BrowserRouter>
-  <RouterSwicth 
-    tags={[
+<Canvas>
+  <Story
+   name="default"
+    args={{
+      appInfos: {
+        version: '1.0.0',
+        name: 'test',
+        type: 'web',
+        region: 'cn',
+      },
+      userSegments: {
+        userId: '1111',
+      },
+      tags: [
         {
           tag: {
             pageName: 'Home',
@@ -55,8 +58,9 @@ Tagging helper
           type: 'button',
           event: 'button_click',
         },
-      ]} 
-    appInfos={{}} 
-    userSegments={{}} 
-    />
-</BrowserRouter>
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
