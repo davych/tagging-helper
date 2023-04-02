@@ -46,6 +46,6 @@ export const send = (pathname: string) => {
       }
     },
     error: (e: Error) => logger.error('send error', e),
-    complete: () => logger.info('send complete'),
+    complete: () => logger.info(pathname, 'send complete'),
   });
 };

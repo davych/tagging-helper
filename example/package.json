@@ -8,7 +8,7 @@
     "build": "parcel build index.html",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=1ff2b4bc449f"
+    "chromatic": "npx chromatic --project-token=1ff2b4bc449f --auto-accept-changes"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
