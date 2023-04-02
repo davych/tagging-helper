@@ -13,7 +13,7 @@ import {
   useNavigate,
   useLocation
 } from "react-router-dom";
-import { initialize } from '../../../src';
+import { initialize, updateTags } from '../../../src';
 
 import Page1 from './Page1';
 import Page2 from './Page2';
@@ -36,6 +36,11 @@ export const App = ({ tags }) => {
       }
     })
   }, [location]);
+
+  React.useEffect(() => {
+    updateTags(tags)
+  }, [tags]);
+
   return (
     <Box >
       <CssBaseline />

@@ -1,6 +1,7 @@
 import * as state from './state';
 import defaultRules from './jsons/rules.json';
-
+import { setProps } from '@ngneat/elf';
+import * as archive from './archive';
 interface Config {
   rules?: RulesType;
   tags: TagsType[];
@@ -20,3 +21,10 @@ export const initialize = (config: Config) => {
   state.compose.update({ rules: mergedRules, tags });
   state.pathname.update(pathname);
 };
+
+export const updateTags = (tags: TagsType[]) => {
+  state.tags.store.update(setProps({ data: tags }));
+  const rules = state.rules.store.getValue();
+  const composeData = archive.compose({ rules: rules.data, tags });
+  state.compose.store.update(setProps({ data: composeData }));
+}
