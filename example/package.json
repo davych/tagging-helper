@@ -11,9 +11,11 @@
     "chromatic": "npx chromatic --project-token=1ff2b4bc449f"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.15",
     "react-app-polyfill": "^1.0.0",
-    "react-router-dom": "^6.10.0",
-    "storybook-addon-react-router-v6": "^0.3.5"
+    "react-router-dom": "^6.10.0"
   },
   "alias": {
     "react": "../node_modules/react",

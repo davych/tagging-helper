@@ -1,30 +1,57 @@
 import * as React from 'react';
-import { withRouter } from 'storybook-addon-react-router-v6';
-import RouterSwicth from './'
+
+import { BrowserRouter } from 'react-router-dom';
+import RouterSwicth from '.'
 export default {
   title: 'Example/Router swicth',
-  component: RouterSwicth, 
-  decorators: [withRouter],
+  component: RouterSwicth,
 };
 
 
-export const Default = () => <RouterSwicth />;
+const Template = (args) => {
+  return (
+    <BrowserRouter>
+      <RouterSwicth {...args} />
+    </BrowserRouter>
+  )
+};
+export const Default = Template.bind({});
 
-Default.story = {
-  parameters: {
-    reactRouter: {
-      browserPath: '/page1',
+Default.args = {
+  tags: [
+    {
+      "tag": {
+        "pageName": "Home",
+        "channel": "Web",
+        "pageType": "content",
+        "section": "sectiontt"
+      },
+      "meta": {
+        "name": "page1"
+      },
+      "identifier": "/page1",
+      "type": "page",
+      "event": "page_view",
+      "rules": {
+        "page": {
+          "testTrack": "<pageName>:<channel>:<pageType>--<section>"
+        }
+      }
+    },
+    {
+      "tag": {
+        "buttonName": "testclick"
+      },
+      "meta": {
+        "location": "page1"
+      },
+      "parent": "/page1",
+      "identifier": "Page1-test-button",
+      "type": "button",
+      "event": "button_click"
     }
-  }
+  ]
 };
 
 
-export const SpecificPath = () => <RouterSwicth />;
 
-SpecificPath.story = {
-  parameters: {
-    reactRouter: {
-      browserPath: '/page2',
-    }
-  }
-}
