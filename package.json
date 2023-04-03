@@ -47,15 +47,15 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "auto-tagging-lib-react",
-  "module": "dist/auto-tagging-lib-react.esm.js",
+  "name": "tagging-helper",
+  "module": "dist/tagging-helper.esm.js",
   "size-limit": [
     {
-      "path": "dist/auto-tagging-lib-react.cjs.production.min.js",
+      "path": "dist/tagging-helper.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/auto-tagging-lib-react.esm.js",
+      "path": "dist/tagging-helper.esm.js",
       "limit": "10 KB"
     }
   ],
