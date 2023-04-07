@@ -1,1 +1,5 @@
-export const a = 1;
+import { usePipeData } from './helpers';
+
+export {
+  usePipeData,
+}

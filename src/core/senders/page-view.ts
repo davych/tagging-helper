@@ -1,11 +1,27 @@
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import logger from '../logger';
-import { merge } from 'lodash';
-import { compose, userSegments, appInfos } from '../state';
+import { merge, get } from 'lodash';
+import { compose, userSegments, appInfos, controllers } from '../state';
 import * as helper from '../helper';
 
-export const send = (pathname: string) => {
+const getRuntimeData = async (pathname: string): Promise<any> => new Promise((resolve) => {
+  const controllersMap = controllers.store.getValue();
+  const controller = get(controllersMap, pathname, null);
+  if (controller) {
+    controller.subscribe({
+      next: (data: any) => {
+        resolve(data);
+      },
+      error: (e: Error) => logger.error('getRuntimeData error', e),
+      complete: () => logger.info(pathname, 'getRuntimeData complete'),
+    });
+  } else {
+    resolve({});
+  }
+});
+
+const buildDigitalData = (pathname: string, runtimeData: Record<string, any>) => {
   const composeValue = compose.store.getValue();
   const { pages } = composeValue.data;
   if (!pages || !pages[pathname]) {
@@ -22,6 +38,7 @@ export const send = (pathname: string) => {
         const { tag, rules, event } = pageSchema;
         const pageData = merge(
           {},
+          runtimeData || {},
           appInfosValue.data,
           userSegmentsValue.data,
           tag
@@ -35,6 +52,15 @@ export const send = (pathname: string) => {
       return null;
     })
   );
+  return data;
+}
+
+export const send = async (pathname: string) => {
+  const runtimeData = await getRuntimeData(pathname);
+  const data = buildDigitalData(pathname, runtimeData);
+  if (!data) {
+    return;
+  }
   data.subscribe({
     next: ({ digitalData, event }: any | null) => {
       if (digitalData) {

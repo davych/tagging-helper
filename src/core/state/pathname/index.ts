@@ -1,5 +1,6 @@
 import { createStore, withProps, setProps } from '@ngneat/elf';
 import { pageView } from '../../senders';
+import { controllers } from '..';
 
 interface PathnameProps {
   pathname: string | null;
@@ -16,7 +17,9 @@ export const update = (pathname: string) =>
 // subscribe to the store
 store.subscribe({
   next: ({ pathname }: { pathname: string }) => {
-    if (pathname) {
+    const controllersMap = controllers.store.getValue();
+    console.log('pathname---->', Object.keys(controllersMap));
+    if (pathname && !controllersMap[pathname]) {
       pageView.send(pathname);
     }
   },

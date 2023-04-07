@@ -1,4 +1,5 @@
 
+//depredated
 import { setProps } from '@ngneat/elf';
 import * as state from './state';
 

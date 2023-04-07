@@ -5,5 +5,6 @@ import * as appInfos from './appInfos';
 import * as userSegments from './userSegments';
 import * as pathname from './pathname';
 import * as compose from './compose';
+import * as controllers from './controller';
 
-export { tags, rules, snapshot, appInfos, userSegments, pathname, compose };
+export { tags, rules, snapshot, appInfos, userSegments, pathname, compose, controllers };

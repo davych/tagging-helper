@@ -7,14 +7,34 @@
       "section": "sectiontt"
     },
     "meta": {
-      "name": "Page1"
+      "name": "page1"
     },
-    "identifier": "/Page1",
+    "identifier": "/page1",
     "type": "page",
     "event": "page_view",
     "rules": {
       "page": {
         "testTrack": "<pageName>:<channel>:<pageType>--<section>"
+      } 
+    }
+  },
+  {
+    "tag": {
+      "pageName": "page2",
+      "channel": "Web",
+      "pageType": "content-page2",
+      "section": "sectiontt-page2"
+    },
+    "meta": {
+      "name": "page2"
+    },
+    "identifier": "/page2",
+    "type": "page",
+    "event": "page_view",
+    "rules": {
+      "page": {
+        "testTrack": "<pageName>:<channel>:<pageType>--<section>",
+        "runtimeCheck": "<pageName>:<channel>:<pageType>--<section>:<username>"
       } 
     }
   },
