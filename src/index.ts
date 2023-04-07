@@ -1,6 +1,1 @@
-import { initialize, updateTags } from './core/initialize';
-export * from './react';
-const NoNeedUse = {
-  updateTags
-}
-export { initialize, NoNeedUse };
+export *  from './core/initialize';

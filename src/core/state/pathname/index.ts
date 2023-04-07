@@ -1,7 +1,7 @@
 import { createStore, withProps, setProps } from '@ngneat/elf';
 import { pageView } from '../../senders';
-import { controllers } from '..';
-
+import { store as dynamicDataStore } from '../dynamicData';
+import {get, isEmpty} from 'lodash';
 interface PathnameProps {
   pathname: string | null;
 }
@@ -16,12 +16,23 @@ export const update = (pathname: string) =>
 
 // subscribe to the store
 store.subscribe({
-  next: ({ pathname }: { pathname: string }) => {
-    const controllersMap = controllers.store.getValue();
-    console.log('pathname---->', Object.keys(controllersMap));
-    if (pathname && !controllersMap[pathname]) {
-      pageView.send(pathname);
-    }
+  next: ({ pathname }: PathnameProps) => {
+      const dynamicData = dynamicDataStore.getValue();
+      const data$ = get(dynamicData, pathname as string, null);
+      if(!data$) {
+        pageView.send();
+      }
+      else {
+        data$.subscribe({
+          next: (data: Record<string, any>) => {
+            if (!isEmpty(data)) {
+              pageView.sendWithDynamicData(data);
+            }
+          },
+          error: (e: Error) => console.error('store pathname error', e),
+          complete: () => console.info('store pathname -> store complete'),
+        });
+      }
   },
   // error: (e: Error) => logger.error('store pathname error', e),
   // complete: () => logger.info('store pathname -> store complete'),

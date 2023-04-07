@@ -3,7 +3,7 @@ import { isObject, reduce, merge, set } from 'lodash';
 export const flattenKeys = (
   obj: Record<string, unknown>,
   path: string[] = []
-): Record<string, unknown> =>
+): Record<string, string> =>
   !isObject(obj)
     ? { [path.join('.')]: obj }
     : reduce(

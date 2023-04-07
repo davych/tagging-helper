@@ -1,20 +1,14 @@
 import { createStore, withProps, setProps } from '@ngneat/elf';
-import { isEmpty } from 'lodash';
-
-interface RulesProps {
-  data: Record<string, unknown>;
-}
+import * as helper from '../../helper';
+import defaultRules from './rules.json';
+import { merge } from 'lodash';
 
 export const store = createStore(
   { name: 'rules' },
-  withProps<RulesProps>({ data: {} })
+  withProps<Record<string, string>>({})
 );
 
-export const update = (rules: Record<string, unknown>) => {
-  const { data } = store.getValue();
-  if (isEmpty(data)) {
-    store.update(setProps({ data: rules }));
-  } else {
-    // nothing todo
-  }
+export const update = (rules: Record<string, any> | undefined = {}) => {
+  const mergedRules = merge(helper.flattenKeys(defaultRules), helper.flattenKeys(rules))
+  store.update(setProps(mergedRules));
 };

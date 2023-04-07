@@ -12,7 +12,7 @@ import {
   useNavigate,
   useLocation
 } from "react-router-dom";
-import { initialize, NoNeedUse } from '../../../src';
+import { initialize, pipePageChange, pipeTags, pipeAppInfos } from '../../../src';
 
 import Page1 from './Page1';
 import Page2 from './Page2';
@@ -21,19 +21,21 @@ export const App = ({ tags, appInfos, userSegments }) => {
   const location = useLocation();
   const navigate = useNavigate();
   React.useEffect(() => {
+    initialize({
+      tags
+    })
+    pipeAppInfos({
+      region: 'cn'
+    });
     navigate('/page1');
   }, []);
+
   React.useEffect(() => {
-    initialize({
-      pathname: location.pathname,
-      tags,
-      appInfos,
-      userSegments
-    })
+    pipePageChange(location.pathname)
   }, [location]);
 
   React.useEffect(() => {
-    NoNeedUse.updateTags(tags)
+    pipeTags(tags)
   }, [tags]);
 
   return (

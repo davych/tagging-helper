@@ -1,9 +1,7 @@
 declare module 'rxjs'
 
 interface RulesType {
-  page?: Record<string, string | any>;
-  button?: Record<string, string | any>;
-  [key: string]: any;
+  [key: string]: string;
 }
 
 // tags type

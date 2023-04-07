@@ -1,5 +1,1 @@
-import { usePipeData } from './helpers';
-
-export {
-  usePipeData,
-}
+export const a = 1
