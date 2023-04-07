@@ -1,36 +1,25 @@
-import logger from '../logger';
-import { decodedData$, decodedWithDynamicData } from '../state/tags/selector';
+import { decodeData } from './utils';
+
+import { store as pathnameStore } from '../state/pathname';
 
 export const send = async () => {
-  decodedData$.subscribe({
-    next: ({digitalData, tag}: {digitalData: any, tag: TagsType}) => {
-      if (digitalData) {
-        // json stringify pretty
-        console.log(
-          'digitalData ---->',
-          JSON.stringify(digitalData, null, 2),
-          JSON.stringify(tag, null, 2)
-        );
-      }
-    },
-    error: (e: Error) => logger.error('send error', e),
-    complete: () => logger.info('send complete'),
-  });
+  const { pathname } = pathnameStore.getValue();
+  const { digitalData, tag } = decodeData(pathname as string);
+  if (digitalData) {
+    console.log(
+      `digitalData ----> ${tag.identifier}:${tag.event}`,
+      JSON.stringify(digitalData, null, 2),
+    );
+  }
 };
 
 export const sendWithDynamicData = async (dynamicData: Record<string, any>) => {
-  decodedWithDynamicData(dynamicData).subscribe({
-    next: ({digitalData, tag}: {digitalData: any, tag: TagsType}) => {
-      if (digitalData) {
-        // json stringify pretty
-        console.log(
-          'digitalData ---->' + tag.event,
-          JSON.stringify(digitalData, null, 2),
-          JSON.stringify(tag, null, 2)
-        );
-      }
-    },
-    error: (e: Error) => logger.error('send error', e),
-    complete: () => logger.info('send complete'),
-  });
+  const { pathname } = pathnameStore.getValue();
+  const { digitalData, tag } = decodeData(pathname as string, dynamicData);
+  if (digitalData) {
+    console.log(
+      `digitalData[dynamic] ----> ${tag.identifier}:${tag.event}`,
+      JSON.stringify(digitalData, null, 2),
+    );
+  }
 };

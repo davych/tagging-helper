@@ -22,6 +22,10 @@ export const pipeAppInfos = (appInfos: AppInfosType) => {
   state.appInfos.update(appInfos);
 }
 
+export const pipeUserSegments = (userSegments: UserSegmentsType) => {
+  state.userSegments.update(userSegments);
+}
+
 export const pipeRuntimeData = (identifier: string, data: Record<string, any>) => {
   state.dynamicData.update(identifier, data);
 }

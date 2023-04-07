@@ -7,14 +7,14 @@ export const flattenKeys = (
   !isObject(obj)
     ? { [path.join('.')]: obj }
     : reduce(
-        obj,
-        (cum, next, key) =>
-          merge(
-            cum,
-            flattenKeys(next as Record<string, unknown>, [...path, key])
-          ),
-        {}
-      );
+      obj,
+      (cum, next, key) =>
+        merge(
+          cum,
+          flattenKeys(next as Record<string, unknown>, [...path, key])
+        ),
+      {}
+    );
 
 export const replacePlaceholders = (
   data: Record<string, string>,
@@ -40,7 +40,15 @@ export const decode = (data: any, rules: any) => {
   const decodedData = {};
   for (let ruleKey in rules) {
     const rule = rules[ruleKey];
-    set(decodedData, ruleKey, replacePlaceholders(data, rule));
+    if(rule.includes('return ')) {
+      const fn = new Function('data', rule);
+      set(decodedData, ruleKey, fn(data));
+    }
+    else {
+      set(decodedData, ruleKey, replacePlaceholders(data, rule));
+    }
   }
   return decodedData;
 };
+
+
