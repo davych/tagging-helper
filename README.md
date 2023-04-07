@@ -2,7 +2,6 @@ This is a tools for helping FE developers adding tags to track user journey.
 
 # Plan
 ![TA-helper](./TA-helper.jpg)
--
 # TODO
 - [x] Add storybook covert button and mdx description(mdx as documentations in storybook)
 - [x] Add unit testing coverage > 80%
