@@ -33,6 +33,7 @@
     "event": "page_view",
     "rules": {
       "page": {
+        "destination": "return window.location.pathname;",
         "testTrack": "<pageName>:<channel>:<pageType>--<section>",
         "runtimeCheck": "<pageName>:<channel>:<pageType>--<section>:<username>"
       } 

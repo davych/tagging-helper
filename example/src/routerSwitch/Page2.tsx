@@ -1,17 +1,12 @@
 import * as React from 'react';
-import {
-  useNavigate,
-} from "react-router-dom";
-import { pipeRuntimeData } from '../../../src';
+import { useRuntimeData } from '../../../src/react';
 
 export default function Page2() {
-  const [data, setData] = React.useState({username: 'hello'});
+  const [data, setData] = React.useState({});
 
-  const [value, setValue] = React.useState('hello');
-  
-  React.useEffect(() => {
-    pipeRuntimeData('/page2', data)
-  }, [data]);
+  const [value, setValue] = React.useState('');
+
+  useRuntimeData('/page2', data);
 
   return (
     <div>
