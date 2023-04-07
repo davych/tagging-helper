@@ -41,25 +41,13 @@
   },
   {
     "tag": {
-      "buttonName": "testclick"
-    },
-    "meta": {
-      "location": "Page1"
-    },
-    "parent": "/Page1",
-    "identifier": "Page1-test-button",
-    "type": "button",
-    "event": "button_click"
-  },
-  {
-    "tag": {
       "buttonName": "testclick-2"
     },
     "meta": {
-      "location": "About"
+      "location": "/page1"
     },
-    "parent": "/About",
-    "identifier": "home-test-button-2",
+    "parent": "/page1",
+    "identifier": "button-2",
     "type": "button",
     "event": "button_click",
     "rules": {

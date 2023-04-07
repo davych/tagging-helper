@@ -6,5 +6,6 @@ import * as userSegments from './userSegments';
 import * as pathname from './pathname';
 import * as compose from './compose';
 import * as dynamicData from './dynamicData';
+import * as clickable from './clickable';
 
-export { tags, rules, snapshot, appInfos, userSegments, pathname, compose, dynamicData };
+export { tags, rules, snapshot, appInfos, userSegments, pathname, compose, dynamicData, clickable };

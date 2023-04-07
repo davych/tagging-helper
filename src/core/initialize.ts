@@ -14,6 +14,10 @@ export const pipePageChange = (pathname: string) => {
   state.pathname.update(pathname);
 };
 
+export const pipeClickable = (identifier: string) => {
+  state.clickable.update(identifier);
+};
+
 export const pipeTags = (tags: TagsType[]) => {
   state.tags.update(tags);
 }
