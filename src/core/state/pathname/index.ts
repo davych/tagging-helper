@@ -23,15 +23,17 @@ store.subscribe({
         pageView.send();
       }
       else {
-        data$.subscribe({
-          next: (data: Record<string, any>) => {
-            if (!isEmpty(data)) {
-              pageView.sendWithDynamicData(data);
-            }
-          },
-          error: (e: Error) => console.error('store pathname error', e),
-          complete: () => console.info('store pathname -> store complete'),
-        });
+        if(data$.observers.length < 1) {
+          data$.subscribe({
+            next: (data: Record<string, any>) => {
+              if (!isEmpty(data)) {
+                pageView.sendWithDynamicData(data);
+              }
+            },
+            error: (e: Error) => console.error('store pathname error', e),
+            complete: () => console.info('store pathname -> store complete'),
+          });
+        }
       }
   },
   // error: (e: Error) => logger.error('store pathname error', e),

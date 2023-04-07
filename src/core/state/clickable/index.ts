@@ -1,7 +1,7 @@
 import { createStore, withProps, setProps } from '@ngneat/elf';
 import { clickable } from '../../senders';
 import { store as dynamicDataStore } from '../dynamicData';
-import {get, isEmpty} from 'lodash';
+import { get, isEmpty } from 'lodash';
 interface ClickableProps {
   identifier: string | null;
 }
@@ -17,12 +17,16 @@ export const update = (identifier: string) =>
 // subscribe to the store
 store.subscribe({
   next: ({ identifier }: ClickableProps) => {
-      const dynamicData = dynamicDataStore.getValue();
-      const data$ = get(dynamicData, identifier as string, null);
-      if(!data$) {
-        clickable.send();
-      }
-      else {
+    if (!identifier) {
+      return;
+    }
+    const dynamicData = dynamicDataStore.getValue();
+    const data$ = get(dynamicData, identifier as string, null);
+    if (!data$) {
+      clickable.send();
+    }
+    else {
+      if (data$.observers.length < 1) {
         data$.subscribe({
           next: (data: Record<string, any>) => {
             if (!isEmpty(data)) {
@@ -33,5 +37,6 @@ store.subscribe({
           complete: () => console.info('store clickable -> store complete'),
         });
       }
+    }
   },
 });
