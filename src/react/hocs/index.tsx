@@ -1,9 +1,11 @@
 import React, { FC } from "react";
+import { pipeClickable } from "../../core/initialize";
 
 // WithClickable
 export type WithClickableProps = {
   onClick: () => void;
   identifier?: string;
+  [key: string]: any;
 };
 
 export const withTaggingClickable = <P extends WithClickableProps>(
@@ -11,7 +13,9 @@ export const withTaggingClickable = <P extends WithClickableProps>(
 ): FC<P> => {
   return (props) => {
     const onClick = () => {
-      console.log("click", props.identifier);
+      if (props.identifier) {
+        pipeClickable(props.identifier);
+      }
       props.onClick && props.onClick();
     };
     return <WrappedComponent {...props}  onClick={onClick}  />;

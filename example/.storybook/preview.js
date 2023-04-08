@@ -6,8 +6,8 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  previewTabs: {
-    'storybook/docs/panel': { hidden: true }
-  },
-  viewMode: 'story',
+  // previewTabs: {
+  //   'storybook/docs/panel': { hidden: true }
+  // },
+  // viewMode: 'story',
 }

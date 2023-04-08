@@ -2,57 +2,34 @@
   {
     "tag": {
       "pageName": "Home",
-      "channel": "Web",
-      "pageType": "content",
-      "section": "sectiontt"
+      "section": "clickable-page"
     },
     "meta": {
-      "name": "page1"
+      "name": "home"
     },
-    "identifier": "/page1",
+    "identifier": "/home",
     "type": "page",
     "event": "page_view",
     "rules": {
       "page": {
-        "testTrack": "<pageName>:<channel>:<pageType>--<section>"
+        "name": "<pageName>:<section>"
       } 
     }
   },
   {
     "tag": {
-      "pageName": "page2",
-      "channel": "Web",
-      "pageType": "content-page2",
-      "section": "sectiontt-page2"
+      "buttonName": "next-step"
     },
     "meta": {
-      "name": "page2"
+      "location": "/home"
     },
-    "identifier": "/page2",
-    "type": "page",
-    "event": "page_view",
-    "rules": {
-      "page": {
-        "destination": "return window.location.pathname;",
-        "testTrack": "<pageName>:<channel>:<pageType>--<section>",
-        "runtimeCheck": "<pageName>:<channel>:<pageType>--<section>:<username>"
-      } 
-    }
-  },
-  {
-    "tag": {
-      "buttonName": "testclick-2"
-    },
-    "meta": {
-      "location": "/page1"
-    },
-    "parent": "/page1",
-    "identifier": "button-2",
+    "parent": "/home",
+    "identifier": "home-next-step",
     "type": "button",
     "event": "button_click",
     "rules": {
       "button": {
-        "buttonName": "<buttonName>-clicked"
+        "name": "<buttonName>"
       } 
     }
   }
