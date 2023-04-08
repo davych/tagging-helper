@@ -36,6 +36,7 @@ export const useInitialize = ({
 // useRuntimeData
 export const useRuntimeData = (identifier: string, data: Record<string, any>) => {
   useEffect(() => {
+    debugger
     pipeRuntimeData(identifier, data);
   }, [identifier, data])
 }
