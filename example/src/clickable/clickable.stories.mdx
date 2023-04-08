@@ -6,18 +6,84 @@ import tags from './tags';
 <Meta title="Example/clickable" component={Clickable} />
 
 export const Template = (args) => {
+  return <Clickable {...args} />;
+};
+
+## Usage - Clickable in Button
+
+```jsx dark
+import Button from '@mui/material/Button';
+import { withTaggingClickable, useInitialize } from 'at-helpers';
+
+const TrackingButton = withTaggingClickable(Button);
+
+export const MyComponent = ({ tags }) => {
+  useInitialize({
+    pathname: '/home',
+    tags,
+  });
   return (
-      <Clickable {...args} />
+    <TrackingButton
+      variant="contained"
+      identifier="home-next-step"
+      onClick={() => {
+        console.log('click');
+      }}
+    >
+      Next step
+    </TrackingButton>
   );
 };
 
-<Canvas>
-  <Story
-   name="default"
-    args={{
-      tags
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
+export default App;
+```
+
+## The tags json
+  
+  ```json dark
+  [
+  {
+    "tag": {
+      "pageName": "Home",
+      "section": "clickable-page"
+    },
+    "meta": {
+      "name": "home"
+    },
+    "identifier": "/home",
+    "type": "page",
+    "event": "page_view",
+    "rules": {
+      "page": {
+        "name": "<pageName>:<section>"
+      } 
+    }
+  },
+  {
+    "tag": {
+      "buttonName": "next-step"
+    },
+    "meta": {
+      "location": "/home"
+    },
+    "parent": "/home",
+    "identifier": "home-next-step",
+    "type": "button",
+    "event": "button_click",
+    "rules": {
+      "button": {
+        "name": "<buttonName>"
+      } 
+    }
+  }
+]
+  ``` 
+
+<Story
+  name="default"
+  args={{
+    tags,
+  }}
+>
+  {Template.bind({})}
+</Story>

@@ -1,6 +1,2 @@
 {
-  "page": {
-    "testTrack": "<pageName>:<channel>:<pageType>:<section>",
-    "name": "<pageName>:<region>"
-  }
 }

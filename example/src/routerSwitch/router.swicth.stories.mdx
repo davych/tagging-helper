@@ -1,4 +1,4 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Meta, Story } from '@storybook/addon-docs';
 import { withConsole } from '@storybook/addon-console';
 import { BrowserRouter } from 'react-router-dom';
 import RouterSwicth from '.';
@@ -14,7 +14,6 @@ export const Template = (args) => {
   );
 };
 
-<Canvas>
   <Story
    name="default"
     args={{
@@ -23,4 +22,3 @@ export const Template = (args) => {
   >
     {Template.bind({})}
   </Story>
-</Canvas>

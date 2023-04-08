@@ -5,7 +5,7 @@ import { store as pathnameStore } from '../state/pathname';
 export const send = async () => {
   const { pathname } = pathnameStore.getValue();
   const { digitalData, tag } = decodeData(pathname as string);
-  if (digitalData) {
+  if (digitalData && tag) {
     console.log(
       `digitalData ----> ${tag.identifier}:${tag.event}`,
       JSON.stringify(digitalData, null, 2),
@@ -16,7 +16,7 @@ export const send = async () => {
 export const sendWithDynamicData = async (dynamicData: Record<string, any>) => {
   const { pathname } = pathnameStore.getValue();
   const { digitalData, tag } = decodeData(pathname as string, dynamicData);
-  if (digitalData) {
+  if (digitalData && tag) {
     console.log(
       `digitalData[dynamic] ----> ${tag.identifier}:${tag.event}`,
       JSON.stringify(digitalData, null, 2),
