@@ -1,0 +1,23 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { withConsole } from '@storybook/addon-console';
+import Clickable from '.';
+import tags from './tags';
+
+<Meta title="Example/clickable" component={Clickable} />
+
+export const Template = (args) => {
+  return (
+      <Clickable {...args} />
+  );
+};
+
+<Canvas>
+  <Story
+   name="default"
+    args={{
+      tags
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

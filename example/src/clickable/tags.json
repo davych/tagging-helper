@@ -1,0 +1,59 @@
+[
+  {
+    "tag": {
+      "pageName": "Home",
+      "channel": "Web",
+      "pageType": "content",
+      "section": "sectiontt"
+    },
+    "meta": {
+      "name": "page1"
+    },
+    "identifier": "/page1",
+    "type": "page",
+    "event": "page_view",
+    "rules": {
+      "page": {
+        "testTrack": "<pageName>:<channel>:<pageType>--<section>"
+      } 
+    }
+  },
+  {
+    "tag": {
+      "pageName": "page2",
+      "channel": "Web",
+      "pageType": "content-page2",
+      "section": "sectiontt-page2"
+    },
+    "meta": {
+      "name": "page2"
+    },
+    "identifier": "/page2",
+    "type": "page",
+    "event": "page_view",
+    "rules": {
+      "page": {
+        "destination": "return window.location.pathname;",
+        "testTrack": "<pageName>:<channel>:<pageType>--<section>",
+        "runtimeCheck": "<pageName>:<channel>:<pageType>--<section>:<username>"
+      } 
+    }
+  },
+  {
+    "tag": {
+      "buttonName": "testclick-2"
+    },
+    "meta": {
+      "location": "/page1"
+    },
+    "parent": "/page1",
+    "identifier": "button-2",
+    "type": "button",
+    "event": "button_click",
+    "rules": {
+      "button": {
+        "buttonName": "<buttonName>-clicked"
+      } 
+    }
+  }
+]
