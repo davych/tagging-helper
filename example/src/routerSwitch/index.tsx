@@ -15,6 +15,7 @@ import { useInitialize } from '../../../src/react';
 
 import Page1 from './Page1';
 import Page2 from './Page2';
+import Page3 from './Page3';
 
 export const App = ({ tags }) => {
   const location = useLocation();
@@ -37,23 +38,21 @@ export const App = ({ tags }) => {
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            hello
-          </Typography>
           <Box>
             <Button sx={{ color: '#fff' }} onClick={() => {
               navigate('/page1')
             }}>
-              page1
+              Normal-page1
             </Button>
             <Button sx={{ color: '#fff' }} onClick={() => {
               navigate('/page2')
             }}>
-              page2
+              Normal-page2
+            </Button>
+            <Button sx={{ color: '#fff' }} onClick={() => {
+              navigate('/page3')
+            }}>
+              Dynamic-page3
             </Button>
           </Box>
         </Toolbar>
@@ -65,6 +64,7 @@ export const App = ({ tags }) => {
             element={<Page1 />}
           />
           <Route path="/page2" element={<Page2 />} />
+          <Route path="/page3" element={<Page3 />} />
         </Routes>
       </Box>
     </Box>

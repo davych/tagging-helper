@@ -28,30 +28,26 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const TrackingButton = withTaggingClickable(Button);
 const TrackingDeleteIcon = withTaggingClickable(DeleteIcon);
 
-
 export const App = ({ tags }) => {
   useInitialize({
     pathname: '/home',
     tags,
-  })
+  });
 
   return (
-    <Box >
+    <Box>
       <CssBaseline />
-      <Paper elevation={0} >
+      <Paper elevation={0}>
         <Accordion expanded>
-          <AccordionSummary
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
+          <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
             <Typography>Normal button case</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <TrackingButton
               variant="contained"
-              identifier='home-next-step'
+              identifier="home-next-step"
               onClick={() => {
-                console.log('click -> home-next-step')
+                console.log('click -> home-next-step');
               }}
             >
               Next step
@@ -59,46 +55,41 @@ export const App = ({ tags }) => {
           </AccordionDetails>
         </Accordion>
         <Accordion expanded>
-          <AccordionSummary
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
+          <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
             <Typography>Normal Icon case</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <TrackingDeleteIcon
-              style={{ cursor: "pointer" }}
-              identifier='home-delete-item'
+              style={{ cursor: 'pointer' }}
+              identifier="home-delete-item"
               onClick={() => {
-                console.log('click -> delete item')
-              }} />
+                console.log('click -> delete item');
+              }}
+            />
           </AccordionDetails>
         </Accordion>
         <Accordion expanded>
-          <AccordionSummary
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
+          <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
             <Typography>Dynamic case</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <TrackingButton
               variant="contained"
-              identifier='home-choose-product'
+              identifier="home-choose-product"
               data={{ product: 'product1' }}
               onClick={() => {
-                console.log('click -> choose product1')
+                console.log('click -> choose product1');
               }}
             >
               Choose product1
             </TrackingButton>
-            <Divide style={{margin: "20px 0"}} />
+            <Divide style={{ margin: '20px 0' }} />
             <TrackingButton
               variant="contained"
-              identifier='home-choose-product'
+              identifier="home-choose-product"
               data={{ product: 'product2' }}
               onClick={() => {
-                console.log('click -> choose product2')
+                console.log('click -> choose product2');
               }}
             >
               Choose product2
@@ -107,17 +98,16 @@ export const App = ({ tags }) => {
         </Accordion>
       </Paper>
     </Box>
-  )
+  );
 };
 
-export default App
-
+export default App;
 ```
 
 ## The tags json
-  
-  ```json dark
-  [
+
+```json dark
+[
   {
     "tag": {
       "pageName": "Home",
@@ -132,7 +122,7 @@ export default App
     "rules": {
       "page": {
         "name": "<pageName>:<section>"
-      } 
+      }
     }
   },
   {
@@ -149,7 +139,7 @@ export default App
     "rules": {
       "button": {
         "name": "<buttonName>"
-      } 
+      }
     }
   },
   {
@@ -166,7 +156,7 @@ export default App
     "rules": {
       "button": {
         "name": "<buttonName>"
-      } 
+      }
     }
   },
   {
@@ -183,11 +173,11 @@ export default App
     "rules": {
       "button": {
         "name": "<buttonName>:<product>"
-      } 
+      }
     }
   }
 ]
-  ``` 
+```
 
 <Story
   name="default"

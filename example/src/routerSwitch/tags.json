@@ -1,10 +1,8 @@
 [
   {
     "tag": {
-      "pageName": "Home",
-      "channel": "Web",
-      "pageType": "content",
-      "section": "sectiontt"
+      "pageName": "Page1",
+      "pageType": "content"
     },
     "meta": {
       "name": "page1"
@@ -14,16 +12,15 @@
     "event": "page_view",
     "rules": {
       "page": {
-        "testTrack": "<pageName>:<channel>:<pageType>--<section>"
-      } 
+        "name": "<pageName>:<pageType>"
+      }
     }
   },
   {
     "tag": {
-      "pageName": "page2",
-      "channel": "Web",
+      "pageName": "Page2",
       "pageType": "content-page2",
-      "section": "sectiontt-page2"
+      "section": "section-page2"
     },
     "meta": {
       "name": "page2"
@@ -33,27 +30,26 @@
     "event": "page_view",
     "rules": {
       "page": {
-        "destination": "return window.location.pathname;",
-        "testTrack": "<pageName>:<channel>:<pageType>--<section>",
-        "runtimeCheck": "<pageName>:<channel>:<pageType>--<section>:<username>"
-      } 
+        "name": "<pageName>:<pageType>:<section>"
+      }
     }
   },
   {
     "tag": {
-      "buttonName": "testclick-2"
+      "pageName": "Dynamic-Page3",
+      "pageType": "content-page3",
+      "section": "section-page3"
     },
     "meta": {
-      "location": "/page1"
+      "name": "page3"
     },
-    "parent": "/page1",
-    "identifier": "button-2",
-    "type": "button",
-    "event": "button_click",
+    "identifier": "/page3",
+    "type": "page",
+    "event": "page_view",
     "rules": {
-      "button": {
-        "buttonName": "<buttonName>-clicked"
-      } 
+      "page": {
+        "name": "<pageName>:<pageType>:<section>--<paidId>"
+      }
     }
   }
 ]
