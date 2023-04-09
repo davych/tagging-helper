@@ -32,5 +32,39 @@
         "name": "<buttonName>"
       } 
     }
+  },
+  {
+    "tag": {
+      "buttonName": "delete-item"
+    },
+    "meta": {
+      "location": "/home"
+    },
+    "parent": "/home",
+    "identifier": "home-delete-item",
+    "type": "button",
+    "event": "button_click",
+    "rules": {
+      "button": {
+        "name": "<buttonName>"
+      } 
+    }
+  },
+  {
+    "tag": {
+      "buttonName": "choose-product"
+    },
+    "meta": {
+      "location": "/home"
+    },
+    "parent": "/home",
+    "identifier": "home-choose-product",
+    "type": "button",
+    "event": "button_click",
+    "rules": {
+      "button": {
+        "name": "<buttonName>:<product>"
+      } 
+    }
   }
 ]
