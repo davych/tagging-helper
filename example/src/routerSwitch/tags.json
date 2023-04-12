@@ -51,5 +51,22 @@
         "name": "<pageName>:<pageType>:<section>--<paidId>"
       }
     }
+  },
+  {
+    "tag": {
+      "buttonName": "choose-product"
+    },
+    "meta": {
+      "location": "/page3"
+    },
+    "parent": "/page3",
+    "identifier": "choose",
+    "type": "button",
+    "event": "button_click",
+    "rules": {
+      "button": {
+        "name": "<buttonName>:<product>"
+      } 
+    }
   }
 ]

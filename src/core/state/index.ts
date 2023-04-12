@@ -7,5 +7,6 @@ import * as pathname from './pathname';
 import * as compose from './compose';
 import * as dynamicData from './dynamicData';
 import * as clickable from './clickable';
+import * as push from './push';
 
-export { tags, rules, snapshot, appInfos, userSegments, pathname, compose, dynamicData, clickable };
+export { tags, rules, snapshot, appInfos, userSegments, pathname, compose, dynamicData, clickable, push };

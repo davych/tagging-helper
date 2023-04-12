@@ -1,4 +1,4 @@
-import { CircularProgress } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import * as React from 'react';
 import { useRuntimeData } from '../../../src/react';
 
@@ -17,7 +17,7 @@ export default function Page2() {
 
   return (
     <div>
-      <h1>hello, this is page3, Got your paid ID successful - {data.paidId? data.paidId: <CircularProgress />}</h1>
+      <h1>hello, this is page3, fetching your paid ID - {data.paidId? data.paidId: <CircularProgress />}</h1>
     </div>
   )
 }

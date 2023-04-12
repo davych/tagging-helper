@@ -33,3 +33,7 @@ export const pipeUserSegments = (userSegments: UserSegmentsType) => {
 export const pipeRuntimeData = (identifier: string, data: Record<string, any>) => {
   state.dynamicData.update(identifier, data);
 }
+
+export const push = (identifier: string, data?: Record<string, any>) => {
+  state.push.update(identifier, data || {});
+}
