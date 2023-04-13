@@ -1,4 +1,5 @@
 import * as state from './state';
+import cloneDeep from 'lodash/cloneDeep';
 interface Config {
   rules?: RulesType;
   tags: TagsType[];
@@ -6,8 +7,8 @@ interface Config {
 
 export const initialize = (config: Config) => {
   const { rules, tags } = config;
-  state.rules.update(rules);
-  state.tags.update(tags);
+  state.rules.update(cloneDeep(rules));
+  state.tags.update(cloneDeep(tags));
 };
 
 export const pipePageChange = (pathname: string) => {
@@ -19,7 +20,7 @@ export const pipeClickable = (identifier: string) => {
 };
 
 export const pipeTags = (tags: TagsType[]) => {
-  state.tags.update(tags);
+  state.tags.update(cloneDeep(tags));
 }
 
 export const pipeAppInfos = (appInfos: AppInfosType) => {

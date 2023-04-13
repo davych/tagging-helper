@@ -25,6 +25,7 @@ export const modifyRules = (
     set(tag, 'rules', mergedRules);
     // merge tag
     const mergedTag = merge(
+      {},
       parent?.tag ? parent?.tag : {},
       tag?.tag ? tag?.tag : {}
     );

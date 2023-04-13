@@ -1,3 +1,6 @@
+# Deprecated
+Sorry, this is POC project, I decided deprecate this project, another better solutions regarding tracking user journey inspired by this project.... coming soon.
+
 This is a tools for helping FE developers adding tags to track user journey.
 
 # Plan
