@@ -1,5 +1,5 @@
 # Deprecated
-Sorry, this is POC project, I decided deprecate this project, another better solutions regarding tracking user journey inspired by an experts.... new lib coming soon.
+Sorry, this is a POC project, I decided to deprecate this project, another better solution regarding tracking user journeys inspired by an expert.... new lib coming soon.
 
 This is a tools for helping FE developers adding tags to track user journey.
 
